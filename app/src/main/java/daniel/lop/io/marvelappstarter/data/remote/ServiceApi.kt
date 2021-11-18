@@ -9,12 +9,12 @@ import retrofit2.http.Query
 
 interface ServiceApi {
 
-    @GET("characteres")
+    @GET("characters")
     suspend fun list(
     @Query("nameStartsWith") nameStartsWith: String? = null
     ): Response<CharacterModelResponse>
 
-    @GET("characteres/{charactereId}/comics")
+    @GET("characters/{characterId}/comics")
     suspend fun getComics(
     @Path("characterId", encoded = true) characterId: Int
     ): Response<ComicModelResponse>
