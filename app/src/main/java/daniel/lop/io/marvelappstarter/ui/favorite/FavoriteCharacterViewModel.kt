@@ -1,5 +1,7 @@
 package daniel.lop.io.marvelappstarter.ui.favorite
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +19,8 @@ class FavoriteCharacterViewModel @Inject constructor(
     private val repository: MarvelRepository
 ):ViewModel() {
 
-    private val _favorites = MutableStateFlow<ResourceState<List<CharacterModel>>>(ResourceState.Empty())
-    val favorites: StateFlow<ResourceState<List<CharacterModel>>> = _favorites
+    private val _favorites = MutableLiveData<ResourceState<List<CharacterModel>>>(ResourceState.Empty())
+    val favorites: LiveData<ResourceState<List<CharacterModel>>> = _favorites
 
     init {
         fetch()

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -36,13 +37,13 @@ class FavoriteCharacterFragment: BaseFragment<FragmentFavoriteCharacterBinding, 
         observer()
     }
 
-    private fun observer() = lifecycleScope.launch{
-        viewModel.favorites.collect {
+    private fun observer() {
+        viewModel.favorites.observe( viewLifecycleOwner, Observer {
             when(it){
                 is ResourceState.Success -> {
-                    it.data?.let {
+                    it.data?.let { character ->
                         binding.tvEmptyList.hide()
-                        characterAdapter.characters = it.toList()
+                        characterAdapter.characters = character.toList()
                     }
                 }
                 is ResourceState.Empty -> {
@@ -50,7 +51,7 @@ class FavoriteCharacterFragment: BaseFragment<FragmentFavoriteCharacterBinding, 
                 }
                 else -> {}
             }
-        }
+        })
     }
 
     private fun itemTouchHelperCallback(): ItemTouchHelper.SimpleCallback {
