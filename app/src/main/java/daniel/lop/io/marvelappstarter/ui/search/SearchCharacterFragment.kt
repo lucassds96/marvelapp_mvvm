@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import dagger.hilt.android.AndroidEntryPoint
 import daniel.lop.io.marvelappstarter.R
 import daniel.lop.io.marvelappstarter.databinding.FragmentSearchCharacterBinding
 import daniel.lop.io.marvelappstarter.ui.adapters.CharacterAdapter
@@ -23,12 +21,12 @@ import daniel.lop.io.marvelappstarter.util.show
 import daniel.lop.io.marvelappstarter.util.toast
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-@AndroidEntryPoint
 class SearchCharacterFragment: BaseFragment<FragmentSearchCharacterBinding, SearchCharacterViewModel>() {
 
-    override val viewModel: SearchCharacterViewModel by viewModels()
+    override val viewModel: SearchCharacterViewModel by viewModel()
     private val characterAdapter by lazy { CharacterAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

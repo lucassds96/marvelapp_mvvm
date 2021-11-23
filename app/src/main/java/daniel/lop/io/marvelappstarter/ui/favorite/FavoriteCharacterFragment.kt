@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dagger.hilt.android.AndroidEntryPoint
 import daniel.lop.io.marvelappstarter.R
 import daniel.lop.io.marvelappstarter.databinding.FragmentFavoriteCharacterBinding
 import daniel.lop.io.marvelappstarter.ui.adapters.CharacterAdapter
@@ -21,13 +17,11 @@ import daniel.lop.io.marvelappstarter.ui.state.ResourceState
 import daniel.lop.io.marvelappstarter.util.hide
 import daniel.lop.io.marvelappstarter.util.show
 import daniel.lop.io.marvelappstarter.util.toast
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FavoriteCharacterFragment: BaseFragment<FragmentFavoriteCharacterBinding, FavoriteCharacterViewModel>() {
 
-    override val viewModel: FavoriteCharacterViewModel by viewModels()
+    override val viewModel: FavoriteCharacterViewModel by viewModel()
     private val characterAdapter by lazy { CharacterAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

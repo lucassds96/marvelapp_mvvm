@@ -3,9 +3,8 @@ package daniel.lop.io.marvelappstarter.repository
 import daniel.lop.io.marvelappstarter.data.local.MarvelDao
 import daniel.lop.io.marvelappstarter.data.model.character.CharacterModel
 import daniel.lop.io.marvelappstarter.data.remote.ServiceApi
-import javax.inject.Inject
 
-class MarvelRepository @Inject constructor(
+class MarvelRepository (
     private val api: ServiceApi,
     private val dao: MarvelDao
 ) {

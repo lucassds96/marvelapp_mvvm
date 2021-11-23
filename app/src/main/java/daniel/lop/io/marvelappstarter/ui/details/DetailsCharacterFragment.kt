@@ -2,13 +2,11 @@ package daniel.lop.io.marvelappstarter.ui.details
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import dagger.hilt.android.AndroidEntryPoint
 import daniel.lop.io.marvelappstarter.R
 import daniel.lop.io.marvelappstarter.data.model.character.CharacterModel
 import daniel.lop.io.marvelappstarter.databinding.FragmentDetailsCharacterBinding
@@ -22,11 +20,11 @@ import daniel.lop.io.marvelappstarter.util.toast
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class DetailsCharacterFragment: BaseFragment<FragmentDetailsCharacterBinding, DetailsCharacterViewModel>() {
 
-    override val viewModel: DetailsCharacterViewModel by viewModels()
+    override val viewModel: DetailsCharacterViewModel by viewModel()
 
     private val comicAdapter by lazy { ComicAdapter() }
     private lateinit var characterModel: CharacterModel
